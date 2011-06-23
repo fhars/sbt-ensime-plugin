@@ -1,0 +1,25 @@
+A quick and dirty sbt plugin that writes a simple .ensime file
+==============================================================
+
+Since sbt 0.10 did away with the lib_managed directory, ensime does no
+longer know where to find library dependencies for a project, see
+https://github.com/aemoncannon/ensime/issues/157 for the discussion.
+
+While people work on a complete solution, this plugin allows to
+quickly generate an .ensime file in the top project directory that
+contains all the dependency jars in the :compile-jars variable. It
+does not know anything about subprojects or any fancy things, but it
+restores elementary ensime functionality.
+
+How to use it
+-------------
+
+Clone this repository, and do a publish-local in sbt. Then put the line
+
+libraryDependencies += "de.hars" %% "ensime-plugin" % "0.1"
+
+in your ~/.sbt/plugins/build.sbt. Then you can just say "ensime" at
+the sbt prompt in an sbt project and it will write a new .ensime file.
+It will overwrite an existing file, so if you have an existing project
+with settings you want to keep, you should move the old file out of
+the way and copy the old settings over.
