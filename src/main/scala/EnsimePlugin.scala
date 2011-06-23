@@ -25,16 +25,16 @@ object EnsimePlugin extends Plugin
       for (dir <-baseOpt) {
 	val fn = dir / ".ensime"
 	val fw = new FileWriter(fn)
-	fw.write("(\n:use-sbt t")
+	fw.write("(\n:use-sbt t\n")
 	try {
-	  for (n <- nameOpt) { fw.write(":project-name \"" + n +"\"") }
+	  for (n <- nameOpt) { fw.write(":project-name \"" + n +"\"\n") }
 	  for (cp <- cpOpt) {
 	    val (jars, dirs) = cp.map(_.data).partition(f => f.exists && f.isFile)
 	    def fmt(files: Seq[File]) = files.map("\"" + _ + "\"").reduceRight(_+" "+_)
-	    fw.write(":compile-jars (" + fmt(jars) + ")")
-	    fw.write(":class-dirs ("+ fmt(dirs) +")")
+	    fw.write(":compile-jars (" + fmt(jars) + ")\n")
+	    fw.write(":class-dirs ("+ fmt(dirs) +")\n")
 	  }
-	  fw.write(")")
+	  fw.write(")\n")
 	} finally {
 	  fw.close()
 	}
