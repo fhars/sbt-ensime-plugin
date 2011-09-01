@@ -14,9 +14,10 @@ restores elementary ensime functionality.
 How to use it
 -------------
 
-Clone this repository, and do a publish-local in sbt. Then put the line
+Clone this repository, and do a publish-local in sbt (or a + publish-local
+to build for scala 2.8.1, 2.9.0-1 and 2.9.1). Then put the line
 
-libraryDependencies += "de.hars" %% "ensime-plugin" % "0.1"
+libraryDependencies += "de.hars" %% "ensime-plugin" % "0.2"
 
 in your ~/.sbt/plugins/build.sbt. Then you can just say "ensime" at
 the sbt prompt in an sbt project and it will write a new .ensime file.
