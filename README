@@ -1,11 +1,16 @@
 A quick and dirty sbt plugin that writes a simple .ensime file
 ==============================================================
 
-Since sbt 0.10 did away with the lib_managed directory, ensime does no
-longer know where to find library dependencies for a project, see
+This plugin has been obsoleted by ensime 0.7.something, which now
+supports sbt 0.10 out of the box. Instead of using this plugin, you
+should probably update your ensime install to 0.7.6 or later.
+
+This plugin was necessary since sbt 0.10 did away with the lib_managed
+directory, so older ensime versions did no longer know where to find
+library dependencies for a project, see
 https://github.com/aemoncannon/ensime/issues/157 for the discussion.
 
-While people work on a complete solution, this plugin allows to
+While people worked on a complete solution, this plugin allowed to
 quickly generate an .ensime file in the top project directory that
 contains all the dependency jars in the :compile-jars variable. It
 does not know anything about subprojects or any fancy things, but it
